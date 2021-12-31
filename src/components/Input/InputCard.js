@@ -16,14 +16,15 @@ const useStyle = makeStyles((theme) => ({
   },
   btnConfirm: {
     background: '#5AAC44',
-    color: '#fff',
+    // color: '#fff',
   },
   confirm: {
     margin: theme.spacing(0, 1, 1, 1),
   },
 }));
-export default function InputCard({ setOpen, listId, type }) {
+export default function InputCard({ setOpen, listId, type,mode }) {
   const classes = useStyle();
+  // console.log(mode)
   const { addMoreCard, addMoreList } = useContext(storeApi);
   const [title, setTitle] = useState('');
 
@@ -55,17 +56,20 @@ export default function InputCard({ setOpen, listId, type }) {
               className: classes.input,
             }}
             value={title}
-            validators={"required"}
+            required={"true"}
             placeholder={
               type === 'card'
-                ? 'Enter a title of this card..'
+                ? 'Enter the title for the card..'
                 : 'Enter list title...'
             }
           />
         </Paper>
       </div>
       <div className={classes.confirm}>
-        <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>
+        <Button style={{
+          borderRadius:"5px",
+          // background:mode.mode.mode==="light"?"#5dc9c4":"#5AAC44"
+        }} onClick={handleBtnConfirm}>
           {type === 'card' ? 'Add Card' : 'Add List'}
         </Button>
         <IconButton onClick={() => setOpen(false)}>

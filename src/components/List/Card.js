@@ -2,7 +2,6 @@ import React from 'react';
 import { Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Draggable } from 'react-beautiful-dnd';
-import "./card.css";
 const useStyle = makeStyles((theme) => ({
   card: {
     padding: theme.spacing(1, 1, 1, 2),
@@ -21,7 +20,8 @@ console.log(mode)
           {...provided.dragHandleProps}
           {...provided.draggableProps}
         >
-          <Paper className={classes.card}>{card.title}</Paper>
+          <Paper className={classes.card}
+          style={{backgroundColor:mode.mode.mode==='light'?"#ffffff":"#202328"}}>{card.title}</Paper>
         </div>
       )}
     </Draggable>

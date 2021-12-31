@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { Typography, InputBase } from '@mui/material';
+import { Typography, InputBase, TextField, Input } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import storeApi from '../utils/storeApi';
 
 const useStyle = makeStyles((theme) => ({
@@ -18,12 +19,11 @@ const useStyle = makeStyles((theme) => ({
     fontSize: '1.2rem',
     fontWeight: 'bold',
     margin: theme.spacing(1),
-    '&:focus': {
-    //   background: '#ddd',
-    },
+   
   },
 }));
-export default function Title({ title, listId }) {
+export default function Title({ title, listId ,mode}) {
+  // console.log(mode)
   const [open, setOpen] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const { updateListTitle } = useContext(storeApi);
@@ -47,15 +47,24 @@ export default function Title({ title, listId }) {
             inputProps={{
               className: classes.input,
             }}
+            style={{  
+               fontSize: '1.2rem',
+               fontWeight: 'bold',
+             '&:focus': {
+      background: mode.mode.mode==='light'? '#ddd':"#67737a",
+    },}}
             fullWidth
+            required
             onBlur={handleOnBlur}
           />
+        
         </div>
       ) : (
         <div className={classes.editableTitleContainer}>
           <Typography
             onClick={() => setOpen(!open)}
             className={classes.editableTitle}
+            style={{textAlign:"center",marginTop:'10px'}}
           >
             {title}
           </Typography>

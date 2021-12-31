@@ -9,7 +9,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 const useStyle = makeStyles((theme) => ({
   root: {
     minWidth: '300px',
-    // backgroundColor: '#EBECF0',
+ 
     
     marginLeft: theme.spacing(1),
   },
@@ -27,10 +27,10 @@ export default function List({ list, index,mode }) {
         <div {...provided.draggableProps} ref={provided.innerRef}>
           <Paper className={classes.root}
           style={{
-              backgroundColor:mode.mode.mode==='light'?'#EBECF0':"#202328",
+              backgroundColor:mode.mode.mode==='light'?'#EBECF0':"#0f0f0f",
           }} {...provided.dragHandleProps}>
             <CssBaseline />
-            <Title title={list.title} listId={list.id} />
+            <Title title={list.title} listId={list.id}mode={mode}/>
             <Droppable droppableId={list.id}>
               {(provided) => (
                 <div
@@ -46,7 +46,7 @@ export default function List({ list, index,mode }) {
               )}
             </Droppable>
 
-            <InputContainer listId={list.id} type="card" />
+            <InputContainer listId={list.id} type="card" mode={mode} />
           </Paper>
         </div>
       )}
