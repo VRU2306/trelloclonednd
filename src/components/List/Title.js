@@ -40,8 +40,10 @@ export default function Title({ title, listId ,mode}) {
     <div>
       {open ? (
         <div>
-          <InputBase
+            <ValidatorForm   >
+          <TextValidator
           aria-required
+          variant="standard"
             onChange={handleOnChange}
             autoFocus
             value={newTitle}
@@ -58,7 +60,7 @@ export default function Title({ title, listId ,mode}) {
             required
             onBlur={handleOnBlur}
           />
-        
+        </ValidatorForm>
         </div>
       ) : (
         <div className={classes.editableTitleContainer}>
