@@ -35,6 +35,7 @@ export default function List({ list, index,mode }) {
               {(provided) => (
                 <div
                   ref={provided.innerRef}
+                  // spread opreates to get all data
                   {...provided.droppableProps}
                   className={classes.cardContainer}
                 >

@@ -48,6 +48,7 @@ export default function App(mode) {
       title,
       cards: [],
     };
+        // spread opreates to get all data form the luist and add it to new list
     const newState = {
       listIds: [...data.listIds, newListId],
       lists: {
@@ -89,7 +90,7 @@ export default function App(mode) {
     const draggingCard = sourceList.cards.filter(
       (card) => card.id === draggableId
     )[0];
-
+    // spread opreates to get all data
     if (source.droppableId === destination.droppableId) {
       sourceList.cards.splice(source.index, 1);
       destinationList.cards.splice(destination.index, 0, draggingCard);
@@ -104,7 +105,7 @@ export default function App(mode) {
     } else {
       sourceList.cards.splice(source.index, 1);
       destinationList.cards.splice(destination.index, 0, draggingCard);
-
+    // spread opreates to get all data
       const newState = {
         ...data,
         lists: {
