@@ -25,7 +25,7 @@ export default function InputContainer({ listId, type,mode }) {
   return (
     <div className={classes.root}>
       <Collapse in={open}>
-        <InputCard setOpen={setOpen} listId={listId} type={type} />
+        <InputCard setOpen={setOpen} listId={listId} type={type}  mode={mode}/>
       </Collapse>
       <Collapse in={!open}>
         <Paper

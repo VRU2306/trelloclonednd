@@ -41,6 +41,7 @@ export default function Title({ title, listId ,mode}) {
       {open ? (
         <div>
           <InputBase
+          aria-required
             onChange={handleOnChange}
             autoFocus
             value={newTitle}

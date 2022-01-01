@@ -3,6 +3,8 @@ import { Paper, InputBase, Button, IconButton } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { makeStyles } from '@mui/styles';
 import storeApi from '../utils/storeApi';
+import { ValidatorForm } from 'react-material-ui-form-validator';
+import TextValidator from 'react-material-ui-form-validator/lib/TextValidator';
 
 const useStyle = makeStyles((theme) => ({
   card: {
@@ -33,30 +35,42 @@ export default function InputCard({ setOpen, listId, type,mode }) {
   };
   const handleBtnConfirm = () => {
     if (type === 'card') {
+      // generastes new idf for each list
       addMoreCard(title, listId);
       setTitle('');
-      setOpen(false);
+      // setOpen(false);
+      
     } else {
       addMoreList(title);
       setTitle('');
       setOpen(false);
     }
   };
+  const handleBlur=()=>{
+     setOpen(false);
+     setTitle(''); 
+  }
 
   return (
     <div>
       <div>
+    <ValidatorForm   
+          action=""
+      
+          noValidate={true}
+          onSubmit={()=>{{handleBtnConfirm(title)}}}>
         <Paper className={classes.card}>
-          <InputBase
+       
+          <TextValidator
             onChange={handleOnChange}
+            variant="standard"
             multiline
+            validators={["required"]}
+            errorMessages={['This field is required']}
             onBlur={() => setOpen(false)}
             fullWidth
-            inputProps={{
-              className: classes.input,
-            }}
+            inputProps={{className: classes.input}}
             value={title}
-            required={"true"}
             placeholder={
               type === 'card'
                 ? 'Enter the title for the card..'
@@ -64,18 +78,20 @@ export default function InputCard({ setOpen, listId, type,mode }) {
             }
           />
         </Paper>
-      </div>
-      <div className={classes.confirm}>
+          <div className={classes.confirm}>
         <Button style={{
           borderRadius:"5px",
-          // background:mode.mode.mode==="light"?"#5dc9c4":"#5AAC44"
-        }} onClick={handleBtnConfirm}>
+          background:"#5dc9c4",
+          color:"white"}} 
+     type="Submit">
           {type === 'card' ? 'Add Card' : 'Add List'}
         </Button>
         <IconButton onClick={() => setOpen(false)}>
           <ClearIcon />
         </IconButton>
       </div>
+       </ValidatorForm>
+      </div> 
     </div>
   );
 }

@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Apps from '../side/App'
 import CssBaseline from '@mui/material/CssBaseline'
 import "./navbar.css";
+import { Tooltip } from '@mui/material';
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function MyApp(mode) {
@@ -26,10 +27,11 @@ function MyApp(mode) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <b style={{alignContent:"center"}}> Daily Trello </b>
           </Typography>
-
+<Tooltip title="Change mode"> 
       <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness6Icon /> : <Brightness7Icon />}
       </IconButton>
+      </Tooltip>
          
        
 

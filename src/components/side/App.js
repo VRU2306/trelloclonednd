@@ -20,7 +20,7 @@ export default function App(mode) {
   console.log(mode)
   const classes = useStyle();
   const addMoreCard = (title, listId) => {
-    console.log(title, listId);
+    // console.log(title, listId);
 
     const newCardId = uuid();
     const newCard = {
