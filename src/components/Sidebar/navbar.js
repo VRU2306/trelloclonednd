@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import Apps from '../side/App'
+import Kanaban from "../activity/Kanban";
 import CssBaseline from '@mui/material/CssBaseline'
 import "./navbar.css";
 import { Tooltip } from '@mui/material';
@@ -29,7 +30,7 @@ function MyApp(mode) {
           </Typography>
 <Tooltip title="Change mode"> 
       <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-        {theme.palette.mode === 'dark' ? <Brightness6Icon /> : <Brightness7Icon />}
+        {/* {theme.palette.mode === 'dark' ? <Brightness6Icon /> : <Brightness7Icon />} */}
       </IconButton>
       </Tooltip>
          
@@ -39,7 +40,8 @@ function MyApp(mode) {
       </AppBar>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-          <Apps mode={mode}/>
+          {/* <Apps mode={mode}/> */}
+          <Kanaban mode={mode}/>
       </Box>
     </Box>
   );
